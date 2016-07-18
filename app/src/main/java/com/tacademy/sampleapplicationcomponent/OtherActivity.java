@@ -14,8 +14,9 @@ public class OtherActivity extends AppCompatActivity {
     TextView messageView;
     EditText inputResultView;
 
-    public final static String EXTRA_KEYWORD = "keyword";
-    public final static String EXTRA_AGE = "age";
+    //public final static String EXTRA_KEYWORD = "keyword";
+    //public final static String EXTRA_AGE = "age";
+    public final static String EXTRA_MY_DATA = "mydata";
     public final static String RESULT_MESSAGE = "message";
 
     @Override
@@ -27,10 +28,14 @@ public class OtherActivity extends AppCompatActivity {
         inputResultView = (EditText)findViewById(R.id.edit_input_result);
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra(EXTRA_KEYWORD);
-        int age = intent.getIntExtra(EXTRA_AGE, 0);
+        //String text = intent.getStringExtra(EXTRA_KEYWORD);
+        //int age = intent.getIntExtra(EXTRA_AGE, 0);
         // 뒤에 default 값을 정의할 수 있다. (값이 넘어오지 않을 경우 0으로 초기화)
         // String은 default 값을 정의하지 않아도 자동으로 null로 처리됨.
+
+        MyData data = (MyData)intent.getParcelableExtra(EXTRA_MY_DATA);
+        String text = data.keyword;
+        int age = data.age;
 
         messageView.setText(text + ", " + age);
 
