@@ -23,7 +23,11 @@
         <activity
             android:name=".FragmentActivity"
             android:exported="true" />
-        <activity android:name=".OtherFragmentActivity"></activity>
+        <activity android:name=".OtherFragmentActivity" />
+        <activity
+            android:name=".BackstackActivity"
+            android:exported="true" />
+
     </application>
 
 </manifest>
