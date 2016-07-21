@@ -41,6 +41,24 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, RC_OTHER); // 여기서의 intent = onActivityResult의 requestCode
             }
         });
+
+        btn = (Button)findViewById(R.id.btn_start);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MyService.class);
+                startService(intent);
+            }
+        });
+
+        btn = (Button)findViewById(R.id.btn_stop);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MyService.class);
+                stopService(intent);
+            }
+        });
     }
 
     @Override

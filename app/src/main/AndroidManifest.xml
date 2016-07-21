@@ -28,6 +28,10 @@
             android:name=".BackstackActivity"
             android:exported="true" />
 
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="false"></service>
     </application>
 
 </manifest>
