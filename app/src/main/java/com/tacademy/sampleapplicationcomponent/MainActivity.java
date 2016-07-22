@@ -1,7 +1,10 @@
 package com.tacademy.sampleapplicationcomponent;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -73,4 +76,26 @@ public class MainActivity extends AppCompatActivity {
             else Toast.makeText(this, "Result Canceled", Toast.LENGTH_SHORT).show();
         }
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        IntentFilter filter = new IntentFilter(MyService.ACTION_MOD_TEN_ZERO);
+        registerReceiver(mReceiver, filter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(mReceiver);
+    }
+
+    BroadcastReceiver mReceiver  = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            int count = intent.getIntExtra("count", 0);
+            Toast.makeText(context, "count : " + count, Toast.LENGTH_SHORT).show();
+            setResultCode(Activity.RESULT_OK);
+        }
+    };
 }
